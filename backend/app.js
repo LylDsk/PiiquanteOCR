@@ -6,6 +6,11 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user");
 
+const bodyParser = require("body-parser");
+
+//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 var cors = require("cors");
 app.use(
   cors({
