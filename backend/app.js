@@ -1,14 +1,11 @@
 const express = require("express");
-
 const app = express();
-
 const mongoose = require("mongoose");
-
 const userRoutes = require("./routes/user");
-
+const saucesRoutes = require("./routes/sauces");
 const bodyParser = require("body-parser");
+const path = require("path");
 
-//app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var cors = require("cors");
@@ -39,5 +36,7 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 app.use("/api/auth", userRoutes);
+app.use("/api/sauces", saucesRoutes);
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 module.exports = app;
