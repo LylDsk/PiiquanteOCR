@@ -38,6 +38,7 @@ exports.create = (req, res, next) => {
     }`,
     usersLiked: [],
     usersDisliked: [],
+    userId: req.auth.userId,
   });
   console.log(sauce);
   sauce

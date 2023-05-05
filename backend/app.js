@@ -5,14 +5,15 @@ const userRoutes = require("./routes/user");
 const saucesRoutes = require("./routes/sauces");
 const bodyParser = require("body-parser");
 const path = require("path");
+require("dotenv").config();
 
 app.use(bodyParser.json());
 
 var cors = require("cors");
 app.use(
   cors({
-    origin: ["http://localhost:4200", "http://127.0.0.1:4200"],
-    credentials: true,
+    origin: process.env.cors_origin ? process.env.cors_origin.split(",") : "*",
+    credentials: process.env.cors_credentials,
   })
 );
 
